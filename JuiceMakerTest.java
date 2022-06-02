@@ -7,7 +7,7 @@ public class JuiceMakerTest {
 		Ingredients ingredients = new Ingredients(0.5f,10,1.2f);
 		JuiceMaker jMaker = new JuiceMaker();
 		
-		jMaker.spinInJar(fruit, ingredients);
+		jMaker.makeJuice(fruit, ingredients);
 	}
 
 }
@@ -16,16 +16,27 @@ class machine{
 	int serialNumber;
 	LocalDate mfgDate;
 	String countryOfOrigin;
+	
 }
 
 class Jar {
 	 int capacity;
+	 int noOfblades;
+	 String material;
+	 
+	public Jar(int capacity, int noOfblades, String material) {
+		super();
+		this.capacity = capacity;
+		this.noOfblades = noOfblades;
+		this.material = material;
+	}
 }
 
 class Juice{
-	Juice(Fruits frt)
+	
+	Juice(Fruits fruitObj)
 	{
-		System.out.println(frt.fruitName+" Juice is ready to consume...");
+		System.out.println(fruitObj.fruitName+" Juice is ready to consume...");
 	}
 }
 
@@ -55,7 +66,8 @@ class Ingredients{
 	
 }
 
-class JuiceMaker extends machine{    //Is-A relationship
+class JuiceMaker extends machine{   				 //Is-A relationship
+
 	String brand;
 	String material;
 	String type;
@@ -63,12 +75,12 @@ class JuiceMaker extends machine{    //Is-A relationship
 	int Price;
 	
 	
-	Jar juiceJar = new Jar();     //Has-A relationship
+	Jar juiceJar = new Jar(1,3,"ABS Plastic");   	  //Has-A relationship
 	
 	
-	public Juice spinInJar(Fruits fruit,Ingredients ingredients) {    //Uses-A
+	public Juice makeJuice(Fruits fruit,Ingredients ingredients) {    //Uses-A
 		Juice juice = new Juice(fruit);
-		return juice;											//Produces-A
+		return juice;												 //Produces-A
 	}
 }
 
