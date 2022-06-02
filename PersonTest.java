@@ -10,12 +10,16 @@ public static void main(String[] args) {
 }
 }
 
-class Person{
+class Person implements Living{
 	private char gender;
 	private int age;
 	private String name;
 	Address homeAddress;
 	Address corrAddress;
+	public void live() {
+		
+	}
+	
 	public Person(char gender, int age, String name) {
 		super();
 		this.gender = gender;
@@ -47,13 +51,50 @@ class Person{
 		}
 	}
 	
-	
 }
-class Student extends Person{
+interface Living{
+	void live();
+}
+
+ interface Studying{
+	void study();	
+}
+
+ interface Solving{
+	 void solve();
+}
+
+ interface Chatting{
+	void chat();
+}
+
+ interface Working{
+		void work();
+	
+		
+	}
+ interface SigningIn{
+	 void signIn();
+ }
+ 
+ interface SigningOut{
+	 void signOut();
+ }
+ 
+class Student extends Person implements Studying, Solving, Chatting{
 	private int rollno;
 	private String collegeName;
 	private String stream;
 	
+	public void study() {
+		
+	}
+	public void solve(){
+		
+	}
+	public void chat() {
+		
+	}
 	public Student(char gender, int age, String name, int rollno, String collegeName, String stream) {
 		super(gender, age, name);
 		this.rollno = rollno;
@@ -65,23 +106,29 @@ class Student extends Person{
 			String country, int pin, String area1, String house1, String state1, String city1, String country1,
 			int pin1) 
 	{
+		
 		super(gender, age, name, area, house, city, state, country, pin, area1, house1, state1, city1, country1, pin1);
+		
 		this.rollno = rollno;
 		this.collegeName = collegeName;
 		this.stream = stream;
-		
+		this.printStudent();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	public void printStudent() {
+		System.out.println("ROLL NO.           :"+rollno);
+		System.out.println("COLLEGE NAME       :"+collegeName);
+		System.out.println("STREAM             :"+stream);
+	}
+	
 	@Override
 	public String toString() {
 		return super.toString()+"\nStudent [rollno=" + rollno + ", collegeName=" + collegeName + ", stream=" + stream + "]";
 	}
 	
-	
-	
 }
-class Employee extends Student{
+class Employee extends Student implements Working,SigningIn,SigningOut{
 	private int empNo;
 	private String companyName;
 	private String Designation;
@@ -100,6 +147,24 @@ class Employee extends Student{
 	public String toString() {
 		return super.toString()+"\nEmployee [empNo=" + empNo + ", companyName=" + companyName + ", Designation=" + Designation
 				+ ", salary=" + salary + "]";
+	}
+
+	@Override
+	public void signOut() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void signIn() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void work() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
