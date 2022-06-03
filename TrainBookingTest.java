@@ -4,17 +4,27 @@ public class TrainBookingTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Ticket passenger1 = new Ticket();
+		bookTicket passenger1 = new bookTicket();
+		//Ticket passenger2 = new Ticket();
 		
-		passenger1.bookTicket("Rohit Verma","KYN","CSMT",2022,05,31);
+		passenger1.updateTicket("Rohit Verma","KYN","CSMT",2022,05,31);
 		passenger1.printTicket();
 		System.out.println();
-		passenger1.cancelTicket(7000647);
+		//passenger1.cancelTicket(7000647);
+		//Passenger2
 	}
 
 }
 
-class Ticket{
+class bookTicket{
+	
+	bookTicket(){
+		PNR = 0;
+		passengerName = "NONAME";
+		Src = "A";
+		Dest = "B";
+		dateOfJourney= null;
+	}
 	
 	int PNR;
 	String passengerName, Src, Dest;
@@ -22,7 +32,7 @@ class Ticket{
 	int ticketPrice ;
 	
 	Random random;
-	void bookTicket(String PName,String Source, String Destin,int Year,int Month,int day) {
+	 void updateTicket(String PName,String Source, String Destin,int Year,int Month,int day) {
 		random  = new Random();
 		this.PNR = random.nextInt(1154244, 9912345);
 		this.ticketPrice=random.nextInt(200, 1000);
