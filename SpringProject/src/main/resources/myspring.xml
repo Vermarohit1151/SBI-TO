@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx">
+	
+	<!--JAVA STYLE      
+		Piston thePiston = new Piston("Twin Spark"); 
+		Engine theEngine = new Engine(thePiston);
+		Car theCar = new Car(theEngine);
+	-->
+	
+	<bean id="thePiston" class="com.sbi.Piston"  >
+		<constructor-arg  value="Twin Spark"/>
+	</bean>
+	
+	<bean id="theEngine" class="com.sbi.Engine" >
+		<constructor-arg  ref="thePiston"/>
+	</bean>
+	
+	<bean id="thePetEngine" class="com.sbi.PetrolEngine" >
+		<constructor-arg  ref="thePiston"/>
+	</bean>
+	
+	<bean id="theDieEngine" class="com.sbi.DieselEngine" >
+		<constructor-arg  ref="thePiston"/>
+	</bean>
+	
+	<bean id="theCar" class="com.sbi.Car" >
+		<constructor-arg  ref="theDieEngine" />
+	</bean>
+</beans>	
