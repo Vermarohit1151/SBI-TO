@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.exceptions.FlightListEmptyException;
 import com.example.demo.exceptions.FlightNotFoundException;
@@ -42,6 +43,37 @@ public class FlightServiceImpl implements FlightService {
 		}
 		else {
 			throw new FlightListEmptyException("Flight list is empty...");
+		}
+	}
+
+	@Override
+	public Flight	    saveService(Flight flightObj) 
+	{
+		Flight flightSaved =null;
+		System.out.println("4 : Service Layer");
+		
+			 flightSaved = flightRepo.save(flightObj);	
+		
+		/*else {
+			throw new FlightNotFoundException("Flight With This ID "
+					+ "doesnot exist!!!");
+		}*/
+		return flightSaved;
+	}
+	
+	@Override
+	public void         deleteByIdService(int flightId) throws FlightNotFoundException
+	{
+		System.out.println("4 : Service Layer");
+		Optional<Flight> flight = flightRepo.findById(flightId);
+		
+		if(flight.isPresent()) {
+			
+			flightRepo.deleteById(flightId);
+		}
+		else {
+			throw new FlightNotFoundException("Flight With This ID "
+					+ "doesnot exist!!!");
 		}
 	}
 	

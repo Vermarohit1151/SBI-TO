@@ -15,4 +15,6 @@ public interface FlightService {
 	
 	public Flight findFlightByIdService(int flightId) throws FlightNotFoundException ;
 	public List<Flight> listAllFlightService() throws FlightListEmptyException ;
+	public Flight	    saveService(Flight flightObj) ;
+	public void         deleteByIdService(int flightId) throws FlightNotFoundException;
 }
