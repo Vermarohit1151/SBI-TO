@@ -54,6 +54,12 @@ public class Flight {
 	public void setFlightArrivalTime(LocalDateTime flightArrivalTime) {
 		this.flightArrivalTime = flightArrivalTime;
 	}
+	@Override
+	public String toString() {
+		return "[Flight Number =" + flightNumber + "\nAirlines =" + airline + "\nSource City=" + sourceCity
+				+ "\nDestination City=" + destCity + "\nFlight Departure Time=" + flightDepartureTime + "\nFlight Arrival Time="
+				+ flightArrivalTime + "]\n\n\n";
+	}
 	
 	
 }
